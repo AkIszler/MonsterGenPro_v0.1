@@ -25,3 +25,5 @@ for monster in monsters:
 random_monster = get_random_monster(monsters)
 print("\nRandomly selected monster:")
 print(random_monster)
+
+
