@@ -1,0 +1,16 @@
+Welcome to MonsterEngine!!!
+
+Step into a world where spawning monsters in your game is as easy as calling a single function. MonsterEngine is a sleek, robust server-like software designed to handle one primary task with exceptional efficiency: seamlessly spawning monsters (or any enemies) into your game environment.
+
+The Concept:
+
+With MonsterEngine, all you need is a simple spreadsheet containing the details of your game’s enemies. When you run the binary (currently in Alpha), the Engine will automatically extract the data from your spreadsheet, assign unique IDs to each enemy, and encapsulate them within what we call a "Monster Struct." This struct is currently in its early stages, but rest assured, we are continuously working to enhance its capabilities.
+
+The data from your spreadsheet is integrated into a Python dictionary for immediate access. However, for long-term storage and more complex data management, MonsterEngine offers the MonsterDB, a SQLite database powered by Go Lang, ensuring your game data is both accessible and secure.
+
+How It Works:
+
+Once everything is set up, triggering an encounter is a breeze. Simply call the function to engage MonsterEngine, and it will return a Monster Struct featuring a randomly selected monster complete with stats, HP, and items if needed. Additionally, you have the flexibility to spawn multiple monsters, either as groups or individually, adding a dynamic and unpredictable element to your game encounters.
+
+We are committed to refining MonsterEngine and will be rolling out more features soon. Stay tuned for updates as we work towards delivering a fully functional model!
+
