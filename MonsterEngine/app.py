@@ -17,6 +17,20 @@ def get_random_monster(monsters):
 # Generate a list of 5 monsters
 monsters = [generate_monster(i+1) for i in range(5)]
 
+def example_goblin():
+    goblin = {
+        'ID': 1,
+        'HP': 5,
+        'ATK': 2,
+        'DEF': 3,
+        'AGI': 3,
+        'EVA': 3,
+        'WPN': "stick",
+        'WM': 2
+    }
+    return goblin
+
+
 # Print all monsters
 for monster in monsters:
     print(monster)
@@ -26,4 +40,6 @@ random_monster = get_random_monster(monsters)
 print("\nRandomly selected monster:")
 print(random_monster)
 
+sampleGob = example_goblin()
 
+print(sampleGob)
