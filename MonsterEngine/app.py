@@ -1,4 +1,5 @@
 import random
+import os
 
 def generate_monster(id):
     return {
@@ -16,6 +17,35 @@ def get_random_monster(monsters):
 
 # Generate a list of 5 monsters
 monsters = [generate_monster(i+1) for i in range(5)]
+
+file = os.path.join('../Untitled spreadsheet.xlsx')
+
+def get_monsters(file):
+
+    # Open the file
+    with open(file, 'r') as f:
+        # Read the file line by line
+        for line in f:
+            # Split the line into fields
+            fields = line.strip().split(',')
+
+            # Create a dictionary from the fields
+            monster = {
+                'ID': int(fields[0]),
+                'HP': int(fields[1]),
+                'ATK': int(fields[2]),
+                'DEF': int(fields[3]),
+                'AGI': int(fields[4]),
+                'EVA': int(fields[5]),
+                'WPN': fields[6],
+                'WM': int(fields[7])
+            }
+
+            # Add the monster to the list
+            monsters.append(monster)
+
+    return monsters
+
 
 def example_goblin():
     goblin = {
@@ -43,3 +73,5 @@ print(random_monster)
 sampleGob = example_goblin()
 
 print(sampleGob)
+
+print(get_monsters(file))
