@@ -26,15 +26,15 @@ type Character struct {
 }
 
 func main() {
-	// Define a command-line argument for the file name
+//cli arg
 	fileName := flag.String("file", "data.xlsx", "Excel file to read from")
 	flag.Parse()
 
-	// Construct the full file path
+	// file path shit
 	filePath := filepath.Join("data", *fileName)
 	fmt.Printf("Attempting to open file: %s\n", filePath) // Debug print
 
-	// Check if the file exists
+	// does the bitch exist
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		log.Fatalf("File does not exist: %s\n", filePath)
 	}
@@ -52,6 +52,7 @@ func main() {
 	}
 
 	//-----------------------------------------
+	//still testing I just hate myself
 
 	// Open the Excel file
 	f, err := excelize.OpenFile(filePath)
