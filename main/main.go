@@ -18,7 +18,7 @@ type Monster struct {
 
 func main() {
 
-	scriptPath := "../read.pycd "
+	scriptPath := "../MonsterEngine/app.py"
 
 	// Command to run the Python script
 	cmd := exec.Command("python3", scriptPath)
