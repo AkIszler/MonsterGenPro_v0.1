@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 	"path/filepath"
 	"strconv"
 
@@ -26,12 +27,31 @@ type Character struct {
 
 func main() {
 	// Define a command-line argument for the file name
-	fileName := flag.String("file", "chartest.xlsx", "Excel file to read from")
+	fileName := flag.String("file", "data.xlsx", "Excel file to read from")
 	flag.Parse()
 
 	// Construct the full file path
 	filePath := filepath.Join("data", *fileName)
 	fmt.Printf("Attempting to open file: %s\n", filePath) // Debug print
+
+	// Check if the file exists
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+		log.Fatalf("File does not exist: %s\n", filePath)
+	}
+
+	//testing----------------------------
+	fmt.Printf("Command-line arguments: %v\n", os.Args)
+
+	files, err := os.ReadDir("data")
+	if err != nil {
+		log.Fatalf("Failed to read the data directory: %v", err)
+	}
+	fmt.Println("Files in data directory:")
+	for _, file := range files {
+		fmt.Println(file.Name())
+	}
+
+	//-----------------------------------------
 
 	// Open the Excel file
 	f, err := excelize.OpenFile(filePath)
