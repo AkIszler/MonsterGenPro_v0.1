@@ -1,8 +1,10 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
+	"path/filepath"
 	"strconv"
 
 	"github.com/xuri/excelize/v2"
@@ -23,20 +25,32 @@ type Character struct {
 }
 
 func main() {
-	f, err := excelize.OpenFile("data.xlsx")
+	// Define a command-line argument for the file name
+	fileName := flag.String("file", "chartest.xlsx", "Excel file to read from")
+	flag.Parse()
+
+	// Construct the full file path
+	filePath := filepath.Join("data", *fileName)
+	fmt.Printf("Attempting to open file: %s\n", filePath) // Debug print
+
+	// Open the Excel file
+	f, err := excelize.OpenFile(filePath)
 	if err != nil {
 		log.Fatalf("Failed to open the Excel file: %v", err)
 	}
 
+	// Get all the rows in the first sheet
 	rows, err := f.GetRows("Sheet1")
 	if err != nil {
 		log.Fatalf("Failed to get rows: %v", err)
 	}
 
+	// Initialize a map to hold the data
 	characters := make(map[int]Character)
 
+	// Iterate through the rows and fill out the struct
 	for i, row := range rows {
-		// Skip the header row importaint!!!
+		// Skip the header row
 		if i == 0 {
 			continue
 		}
@@ -76,9 +90,6 @@ func main() {
 	for id, character := range characters {
 		fmt.Printf("ID: %d, Name: %s, Level: %d, HP: %d, MP: %d, Str: %d, End: %d, Int: %d, Cha: %d, Dex: %d, Wis: %d\n", id, character.Name, character.Level, character.HP, character.MP, character.Str, character.End, character.Int, character.Cha, character.Dex, character.Wis)
 	}
-
-	fmt.Println(characters)
-
 }
 
 // convertToInt converts a string to an int, defaulting to a specified value if the string is empty or invalid
