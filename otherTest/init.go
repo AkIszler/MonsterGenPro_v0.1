@@ -26,7 +26,7 @@ type Character struct {
 }
 
 func main() {
-//cli arg
+	//cli arg
 	fileName := flag.String("file", "data.xlsx", "Excel file to read from")
 	flag.Parse()
 
@@ -111,6 +111,11 @@ func main() {
 	for id, character := range characters {
 		fmt.Printf("ID: %d, Name: %s, Level: %d, HP: %d, MP: %d, Str: %d, End: %d, Int: %d, Cha: %d, Dex: %d, Wis: %d\n", id, character.Name, character.Level, character.HP, character.MP, character.Str, character.End, character.Int, character.Cha, character.Dex, character.Wis)
 	}
+
+	test := altered_char(characters[0])
+
+	fmt.Println(test)
+
 }
 
 // convertToInt converts a string to an int, defaulting to a specified value if the string is empty or invalid
@@ -123,4 +128,10 @@ func convertToInt(s string, defaultValue int) int {
 		return defaultValue
 	}
 	return value
+}
+
+func altered_char(char Character) Character {
+	alter_char := char
+
+	return alter_char
 }
