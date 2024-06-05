@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -112,9 +113,7 @@ func main() {
 		fmt.Printf("ID: %d, Name: %s, Level: %d, HP: %d, MP: %d, Str: %d, End: %d, Int: %d, Cha: %d, Dex: %d, Wis: %d\n", id, character.Name, character.Level, character.HP, character.MP, character.Str, character.End, character.Int, character.Cha, character.Dex, character.Wis)
 	}
 
-	test := altered_char(characters[0])
-
-	fmt.Println(test)
+	fmt.Println(altered_char(characters))
 
 }
 
@@ -127,4 +126,27 @@ func convertToInt(s string, defaultValue int) int {
 		return defaultValue
 	}
 	return value
+}
+
+// altered_char returns a randomly selected character and adds random numbers to the values by 0.2
+func altered_char(characters map[int]Character) Character {
+	keys := make([]int, 0, len(characters))
+	for k := range characters {
+		keys = append(keys, k)
+	}
+	randomIndex := rand.Intn(len(keys)) // Use the length of the keys slice as the upper limit
+	selectedCharacter := characters[keys[randomIndex]]
+
+	// Add random numbers to the values by 0.2
+	selectedCharacter.Level += rand.Intn(3) // Random number between 0 and 2
+	selectedCharacter.HP += rand.Intn(3)    // Random number between 0 and 2
+	selectedCharacter.MP += rand.Intn(3)    // Random number between 0 and 2
+	selectedCharacter.Str += rand.Intn(3)   // Random number between 0 and 2
+	selectedCharacter.End += rand.Intn(3)   // Random number between 0 and 2
+	selectedCharacter.Int += rand.Intn(3)   // Random number between 0 and 2
+	selectedCharacter.Cha += rand.Intn(3)   // Random number between 0 and 2
+	selectedCharacter.Dex += rand.Intn(3)   // Random number between 0 and 2
+	selectedCharacter.Wis += rand.Intn(3)   // Random number between 0 and 2
+
+	return selectedCharacter
 }
