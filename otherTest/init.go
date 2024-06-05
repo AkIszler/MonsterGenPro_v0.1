@@ -118,7 +118,6 @@ func main() {
 
 }
 
-// convertToInt converts a string to an int, defaulting to a specified value if the string is empty or invalid
 func convertToInt(s string, defaultValue int) int {
 	if s == "" {
 		return defaultValue
@@ -128,10 +127,4 @@ func convertToInt(s string, defaultValue int) int {
 		return defaultValue
 	}
 	return value
-}
-
-func altered_char(char Character) Character {
-	alter_char := char
-
-	return alter_char
 }
