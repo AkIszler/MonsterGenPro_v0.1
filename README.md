@@ -1,5 +1,7 @@
 # MonsterGenPro v0.1
 
+## This project is a bit of a mess right now SORRY*
+ps probs dont try and use it, part of it works but the API is BUSTED.
 
 The application is designed to run a "server" that can randomly generate enemies or characters to populate books, games, or tabletop RPGs like D&D. Its core functionality revolves around the ability to upload spreadsheet data, which the program then stores and retrieves as needed. 
 
