@@ -63,7 +63,7 @@ func readExcelFile(filename string) ([]Character, error) {
 	if err != nil {
 		return nil, err
 	}
-
+	fmt.Print("ready")
 	sheet := xlFile.Sheets[0]
 	var characters []Character
 
